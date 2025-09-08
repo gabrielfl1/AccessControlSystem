@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\Projetos\\AccessControlSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{94717AFD-5CC8-45AC-B850-065DFC05793F}|AccessControl.WinForms\\AccessControl.WinForms.csproj|d:\\projetos\\accesscontrolsystem\\accesscontrol.winforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{94717AFD-5CC8-45AC-B850-065DFC05793F}|AccessControl.WinForms\\AccessControl.WinForms.csproj|solutionrelative:accesscontrol.winforms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|d:\\projetos\\accesscontrolsystem\\accesscontrol.server\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|solutionrelative:accesscontrol.server\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94717AFD-5CC8-45AC-B850-065DFC05793F}|AccessControl.WinForms\\AccessControl.WinForms.csproj|d:\\projetos\\accesscontrolsystem\\accesscontrol.winforms\\accesscontrol.winforms.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{94717AFD-5CC8-45AC-B850-065DFC05793F}|AccessControl.WinForms\\AccessControl.WinForms.csproj|solutionrelative:accesscontrol.winforms\\accesscontrol.winforms.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|d:\\projetos\\accesscontrolsystem\\accesscontrol.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|solutionrelative:accesscontrol.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|d:\\projetos\\accesscontrolsystem\\accesscontrol.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|solutionrelative:accesscontrol.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|d:\\projetos\\accesscontrolsystem\\accesscontrol.server\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8352659E-BCA5-48D0-A936-5570F0EA130D}|AccessControl.Server\\AccessControl.Server.csproj|solutionrelative:accesscontrol.server\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "AccessControl.Server\\Models\\User.cs",
+              "ToolTip": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\Models\\User.cs",
+              "RelativeToolTip": "AccessControl.Server\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T22:05:32.355Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{5da8d69b-058a-4294-a87a-f4f7ae2983b3}"
@@ -30,27 +51,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Projeto]",
-              "DocumentMoniker": "D:\\Projetos\\AccessControlSystem\\AccessControl.WinForms\\Form1.cs",
-              "RelativeDocumentMoniker": "AccessControl.WinForms\\Form1.cs",
-              "ToolTip": "D:\\Projetos\\AccessControlSystem\\AccessControl.WinForms\\Form1.cs [Projeto]",
-              "RelativeToolTip": "AccessControl.WinForms\\Form1.cs [Projeto]",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\Program.cs",
+              "RelativeDocumentMoniker": "AccessControl.Server\\Program.cs",
+              "ToolTip": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\Program.cs",
+              "RelativeToolTip": "AccessControl.Server\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-02T12:27:07.051Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2025-09-08T22:09:23.893Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccessControl.WinForms",
-              "DocumentMoniker": "D:\\Projetos\\AccessControlSystem\\AccessControl.WinForms\\AccessControl.WinForms.csproj",
-              "RelativeDocumentMoniker": "AccessControl.WinForms\\AccessControl.WinForms.csproj",
-              "ToolTip": "D:\\Projetos\\AccessControlSystem\\AccessControl.WinForms\\AccessControl.WinForms.csproj",
-              "RelativeToolTip": "AccessControl.WinForms\\AccessControl.WinForms.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-02T12:27:03.577Z",
+              "DocumentIndex": 3,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\ViewModels\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "AccessControl.Server\\ViewModels\\UserViewModel.cs",
+              "ToolTip": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\ViewModels\\UserViewModel.cs",
+              "RelativeToolTip": "AccessControl.Server\\ViewModels\\UserViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T22:06:17.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "AccessControl.Server\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Projetos\\AccessControlSystem\\AccessControl.Server\\Controllers\\UserController.cs",
+              "RelativeToolTip": "AccessControl.Server\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T22:04:48.053Z",
               "EditorCaption": ""
             }
           ]
