@@ -6,22 +6,22 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AccessControl.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class primeiravercao : Migration
+    public partial class subindoobancocomdados : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AccessRule",
+                name: "AccessRules",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccessRule", x => x.Id);
+                    table.PrimaryKey("PK_AccessRules", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,7 +50,7 @@ namespace AccessControl.Server.Migrations
                     IdUser = table.Column<long>(type: "INTEGER", nullable: false),
                     IdDevice = table.Column<long>(type: "INTEGER", nullable: false),
                     Time = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Status = table.Column<int>(type: "INTEGER", nullable: false)
+                    Status = table.Column<int>(type: "INTEGER", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,12 +58,12 @@ namespace AccessControl.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Schedule",
+                name: "Schedules",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     MondayStart = table.Column<int>(type: "INTEGER", nullable: false),
                     MondayEnd = table.Column<int>(type: "INTEGER", nullable: false),
                     TuesdayStart = table.Column<int>(type: "INTEGER", nullable: false),
@@ -81,7 +81,7 @@ namespace AccessControl.Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Schedule", x => x.Id);
+                    table.PrimaryKey("PK_Schedules", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,116 +103,131 @@ namespace AccessControl.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AccessRuleDevice",
+                name: "DeviceAccessRules",
                 columns: table => new
                 {
-                    AccessRulesId = table.Column<long>(type: "INTEGER", nullable: false),
-                    DevicesId = table.Column<long>(type: "INTEGER", nullable: false)
+                    AccessRuleId = table.Column<long>(type: "INTEGER", nullable: false),
+                    DeviceId = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccessRuleDevice", x => new { x.AccessRulesId, x.DevicesId });
+                    table.PrimaryKey("PK_DeviceAccessRules", x => new { x.AccessRuleId, x.DeviceId });
                     table.ForeignKey(
-                        name: "FK_AccessRuleDevice_AccessRule_AccessRulesId",
-                        column: x => x.AccessRulesId,
-                        principalTable: "AccessRule",
+                        name: "FK_AccessRuleDevice_AccessRuleId",
+                        column: x => x.AccessRuleId,
+                        principalTable: "AccessRules",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AccessRuleDevice_Devices_DevicesId",
-                        column: x => x.DevicesId,
+                        name: "FK_AccessRuleDevice_DeviceId",
+                        column: x => x.DeviceId,
                         principalTable: "Devices",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AccessRuleSchedule",
+                name: "ScheduleAccessRules",
                 columns: table => new
                 {
-                    AccessRulesId = table.Column<long>(type: "INTEGER", nullable: false),
-                    SchedulesId = table.Column<long>(type: "INTEGER", nullable: false)
+                    AccessRuleId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ScheduleId = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccessRuleSchedule", x => new { x.AccessRulesId, x.SchedulesId });
+                    table.PrimaryKey("PK_ScheduleAccessRules", x => new { x.AccessRuleId, x.ScheduleId });
                     table.ForeignKey(
-                        name: "FK_AccessRuleSchedule_AccessRule_AccessRulesId",
-                        column: x => x.AccessRulesId,
-                        principalTable: "AccessRule",
+                        name: "FK_AccessRuleSchedule_AccessRuleId",
+                        column: x => x.AccessRuleId,
+                        principalTable: "AccessRules",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AccessRuleSchedule_Schedule_SchedulesId",
-                        column: x => x.SchedulesId,
-                        principalTable: "Schedule",
+                        name: "FK_AccessRuleSchedule_ScheduleId",
+                        column: x => x.ScheduleId,
+                        principalTable: "Schedules",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AccessRuleUser",
+                name: "UserAccessRules",
                 columns: table => new
                 {
-                    AccessRulesId = table.Column<long>(type: "INTEGER", nullable: false),
-                    UsersId = table.Column<long>(type: "INTEGER", nullable: false)
+                    AccessRuleId = table.Column<long>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccessRuleUser", x => new { x.AccessRulesId, x.UsersId });
+                    table.PrimaryKey("PK_UserAccessRules", x => new { x.AccessRuleId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_AccessRuleUser_AccessRule_AccessRulesId",
-                        column: x => x.AccessRulesId,
-                        principalTable: "AccessRule",
+                        name: "FK_AccessRuleUser_AccessRuleId",
+                        column: x => x.AccessRuleId,
+                        principalTable: "AccessRules",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AccessRuleUser_Users_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_AccessRuleUser_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_AccessRuleDevice_DevicesId",
-                table: "AccessRuleDevice",
-                column: "DevicesId");
+            migrationBuilder.InsertData(
+                table: "AccessRules",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1L, "Regra padrão" });
+
+            migrationBuilder.InsertData(
+                table: "Schedules",
+                columns: new[] { "Id", "FridayEnd", "FridayStart", "MondayEnd", "MondayStart", "Name", "SaturdayEnd", "SaturdayStart", "SundayEnd", "SundayStart", "ThursdayEnd", "ThursdayStart", "TuesdayEnd", "TuesdayStart", "WednesdayEnd", "WednesdayStart" },
+                values: new object[] { 1L, 86400, 0, 86400, 0, "Full Access", 86400, 0, 86400, 0, 86400, 0, 86400, 0, 86400, 0 });
+
+            migrationBuilder.InsertData(
+                table: "ScheduleAccessRules",
+                columns: new[] { "AccessRuleId", "ScheduleId" },
+                values: new object[] { 1L, 1L });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AccessRuleSchedule_SchedulesId",
-                table: "AccessRuleSchedule",
-                column: "SchedulesId");
+                name: "IX_DeviceAccessRules_DeviceId",
+                table: "DeviceAccessRules",
+                column: "DeviceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AccessRuleUser_UsersId",
-                table: "AccessRuleUser",
-                column: "UsersId");
+                name: "IX_ScheduleAccessRules_ScheduleId",
+                table: "ScheduleAccessRules",
+                column: "ScheduleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAccessRules_UserId",
+                table: "UserAccessRules",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AccessRuleDevice");
-
-            migrationBuilder.DropTable(
-                name: "AccessRuleSchedule");
-
-            migrationBuilder.DropTable(
-                name: "AccessRuleUser");
+                name: "DeviceAccessRules");
 
             migrationBuilder.DropTable(
                 name: "Logs");
 
             migrationBuilder.DropTable(
+                name: "ScheduleAccessRules");
+
+            migrationBuilder.DropTable(
+                name: "UserAccessRules");
+
+            migrationBuilder.DropTable(
                 name: "Devices");
 
             migrationBuilder.DropTable(
-                name: "Schedule");
+                name: "Schedules");
 
             migrationBuilder.DropTable(
-                name: "AccessRule");
+                name: "AccessRules");
 
             migrationBuilder.DropTable(
                 name: "Users");

@@ -12,7 +12,7 @@ builder
     })
     .AddJsonOptions(x => {
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; 
-        x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault; 
+        //x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault; << voltar isso se eu quiser que não apareçam os campos null nos GETs
     });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

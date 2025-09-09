@@ -25,11 +25,19 @@ namespace AccessControl.Server.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccessRule");
+                    b.ToTable("AccessRules", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Regra padrão"
+                        });
                 });
 
             modelBuilder.Entity("AccessControl.Server.Models.Device", b =>
@@ -79,6 +87,7 @@ namespace AccessControl.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Status")
+                        .HasMaxLength(50)
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Time")
@@ -86,7 +95,7 @@ namespace AccessControl.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Logs");
+                    b.ToTable("Logs", (string)null);
                 });
 
             modelBuilder.Entity("AccessControl.Server.Models.Schedule", b =>
@@ -109,6 +118,7 @@ namespace AccessControl.Server.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("SaturdayEnd")
@@ -143,7 +153,28 @@ namespace AccessControl.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Schedule");
+                    b.ToTable("Schedules", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            FridayEnd = 86400,
+                            FridayStart = 0,
+                            MondayEnd = 86400,
+                            MondayStart = 0,
+                            Name = "Full Access",
+                            SaturdayEnd = 86400,
+                            SaturdayStart = 0,
+                            SundayEnd = 86400,
+                            SundayStart = 0,
+                            ThursdayEnd = 86400,
+                            ThursdayStart = 0,
+                            TuesdayEnd = 86400,
+                            TuesdayStart = 0,
+                            WednesdayEnd = 86400,
+                            WednesdayStart = 0
+                        });
                 });
 
             modelBuilder.Entity("AccessControl.Server.Models.User", b =>
@@ -177,94 +208,107 @@ namespace AccessControl.Server.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("AccessRuleDevice", b =>
+            modelBuilder.Entity("DeviceAccessRules", b =>
                 {
-                    b.Property<long>("AccessRulesId")
+                    b.Property<long>("AccessRuleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("DevicesId")
+                    b.Property<long>("DeviceId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("AccessRulesId", "DevicesId");
+                    b.HasKey("AccessRuleId", "DeviceId");
 
-                    b.HasIndex("DevicesId");
+                    b.HasIndex("DeviceId");
 
-                    b.ToTable("AccessRuleDevice");
+                    b.ToTable("DeviceAccessRules");
                 });
 
-            modelBuilder.Entity("AccessRuleSchedule", b =>
+            modelBuilder.Entity("ScheduleAccessRules", b =>
                 {
-                    b.Property<long>("AccessRulesId")
+                    b.Property<long>("AccessRuleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("SchedulesId")
+                    b.Property<long>("ScheduleId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("AccessRulesId", "SchedulesId");
+                    b.HasKey("AccessRuleId", "ScheduleId");
 
-                    b.HasIndex("SchedulesId");
+                    b.HasIndex("ScheduleId");
 
-                    b.ToTable("AccessRuleSchedule");
+                    b.ToTable("ScheduleAccessRules");
+
+                    b.HasData(
+                        new
+                        {
+                            AccessRuleId = 1L,
+                            ScheduleId = 1L
+                        });
                 });
 
-            modelBuilder.Entity("AccessRuleUser", b =>
+            modelBuilder.Entity("UserAccessRules", b =>
                 {
-                    b.Property<long>("AccessRulesId")
+                    b.Property<long>("AccessRuleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("UsersId")
+                    b.Property<long>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("AccessRulesId", "UsersId");
+                    b.HasKey("AccessRuleId", "UserId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("AccessRuleUser");
+                    b.ToTable("UserAccessRules");
                 });
 
-            modelBuilder.Entity("AccessRuleDevice", b =>
+            modelBuilder.Entity("DeviceAccessRules", b =>
                 {
                     b.HasOne("AccessControl.Server.Models.AccessRule", null)
                         .WithMany()
-                        .HasForeignKey("AccessRulesId")
+                        .HasForeignKey("AccessRuleId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_AccessRuleDevice_AccessRuleId");
 
                     b.HasOne("AccessControl.Server.Models.Device", null)
                         .WithMany()
-                        .HasForeignKey("DevicesId")
+                        .HasForeignKey("DeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_AccessRuleDevice_DeviceId");
                 });
 
-            modelBuilder.Entity("AccessRuleSchedule", b =>
+            modelBuilder.Entity("ScheduleAccessRules", b =>
                 {
                     b.HasOne("AccessControl.Server.Models.AccessRule", null)
                         .WithMany()
-                        .HasForeignKey("AccessRulesId")
+                        .HasForeignKey("AccessRuleId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_AccessRuleSchedule_AccessRuleId");
 
                     b.HasOne("AccessControl.Server.Models.Schedule", null)
                         .WithMany()
-                        .HasForeignKey("SchedulesId")
+                        .HasForeignKey("ScheduleId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_AccessRuleSchedule_ScheduleId");
                 });
 
-            modelBuilder.Entity("AccessRuleUser", b =>
+            modelBuilder.Entity("UserAccessRules", b =>
                 {
                     b.HasOne("AccessControl.Server.Models.AccessRule", null)
                         .WithMany()
-                        .HasForeignKey("AccessRulesId")
+                        .HasForeignKey("AccessRuleId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_AccessRuleUser_AccessRuleId");
 
                     b.HasOne("AccessControl.Server.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("UsersId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_AccessRuleUser_UserId");
                 });
 #pragma warning restore 612, 618
         }

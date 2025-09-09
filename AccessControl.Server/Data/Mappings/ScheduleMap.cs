@@ -27,6 +27,19 @@ namespace AccessControl.Server.Data.Mappings {
             builder.Property(s => s.SundayStart).IsRequired();
             builder.Property(s => s.SundayEnd).IsRequired();
 
+            
+            builder.HasData(new Schedule { 
+                Id = 1, 
+                Name = "Full Access", 
+                MondayStart = 0, MondayEnd = 86400, 
+                TuesdayStart = 0, TuesdayEnd = 86400, 
+                WednesdayStart = 0, WednesdayEnd = 86400, 
+                ThursdayStart = 0, ThursdayEnd = 86400, 
+                FridayStart = 0, FridayEnd = 86400, 
+                SaturdayStart = 0, SaturdayEnd = 86400, 
+                SundayStart = 0, SundayEnd = 86400 
+            });
+
         }
     }
 }

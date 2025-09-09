@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace AccessControl.Server.Data.Mappings {
     public class AccessRuleMap : IEntityTypeConfiguration<AccessRule> {
         public void Configure(EntityTypeBuilder<AccessRule> builder) {
-            
+
             builder.ToTable("AccessRules");
 
             builder.HasKey(ar => ar.Id);
@@ -13,6 +13,15 @@ namespace AccessControl.Server.Data.Mappings {
 
             builder.Property(ar => ar.Name).IsRequired().HasMaxLength(100);
 
+            // adicionando um valor padrão no banco
+            builder.HasData(
+                new AccessRule {
+                    Id = 1,
+                    Name = "Regra padrão"
+                }
+            );
+
+            // associação
             builder
                 .HasMany(x => x.Users)
                 .WithMany(x => x.AccessRules)
@@ -65,7 +74,8 @@ namespace AccessControl.Server.Data.Mappings {
                         .WithMany()
                         .HasForeignKey("AccessRuleId")
                         .HasConstraintName("FK_AccessRuleSchedule_AccessRuleId")
-                        .OnDelete(DeleteBehavior.Cascade));
+                        .OnDelete(DeleteBehavior.Cascade))
+                .HasData(new { AccessRuleId = 1L, ScheduleId = 1L });
 
         }
     }
